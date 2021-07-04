@@ -21,8 +21,7 @@ export const Title = styled.h1`
 `;
 
 export const ImportFileContainer = styled.section`
-	margin-top: 2.5rem;
-	padding: 4rem;
+	padding: 2rem 4rem;
 `;
 
 export const Footer = styled.section`
@@ -56,7 +55,7 @@ export const Footer = styled.section`
 		transition: background-color 0.2s;
 
 		&:hover {
-			background: ${shade(0.2, '#FFAB1F')};
+			background: ${shade(0.1, '#FFAB1F')};
 		}
 	}
 `;

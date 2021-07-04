@@ -1,19 +1,24 @@
 import React from 'react';
 
 import Header from '../../components/Header';
+import Upload from '../../components/Upload';
 
 import alertImg from '../../assets/alert.svg';
 
 import { Container, Title, ImportFileContainer, Footer } from './styles';
 
 const Import: React.FC = () => {
+	function submitFile(files: File[]): void {
+		// TODO
+	}
+
 	return (
 		<>
 			<Header />
 			<Container>
 				<Title>Importar uma transação</Title>
 				<ImportFileContainer>
-					<h1>Upload</h1>
+					<Upload onUpload={submitFile} />
 
 					<Footer>
 						<p>
