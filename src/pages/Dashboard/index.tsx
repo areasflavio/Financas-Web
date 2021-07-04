@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { useEffect, useState } from 'react';
 
 import Header from '../../components/Header';
 
@@ -6,9 +7,61 @@ import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 import totalImg from '../../assets/total.svg';
 
+import api from '../../services/api';
+import formatValue from '../../utils/formatValues';
+
 import { Container, CardContainer, Card, TableContainer } from './styles';
 
+interface Transaction {
+	id: string;
+	title: string;
+	value: number;
+	formattedValue: string;
+	formattedDate: string;
+	type: 'income' | 'outcome';
+	category: { title: string };
+	created_at: Date;
+}
+
+interface Balance {
+	income: string;
+	outcome: string;
+	total: string;
+}
+
 const Dashboard: React.FC = () => {
+	const [transactions, setTransactions] = useState<Transaction[]>([]);
+	const [balance, setBalance] = useState<Balance>({} as Balance);
+
+	useEffect(() => {
+		async function loadTransactions(): Promise<void> {
+			const response = await api.get('/transactions');
+
+			const formattedTransactions = response.data.transactions.map(
+				(transaction: Transaction) => ({
+					...transaction,
+					formattedValue: formatValue(Number(transaction.value)),
+					formattedDate: new Date(transaction.created_at).toLocaleDateString(
+						'pt-br',
+					),
+				}),
+			);
+
+			const apiBalance = response.data.balance;
+
+			const formattedBalance: Balance = {
+				income: formatValue(Number(apiBalance.income)),
+				outcome: formatValue(Number(apiBalance.outcome)),
+				total: formatValue(Number(apiBalance.total)),
+			};
+
+			setTransactions(formattedTransactions);
+			setBalance(formattedBalance);
+		}
+
+		loadTransactions();
+	}, []);
+
 	return (
 		<>
 			<Header />
@@ -20,21 +73,21 @@ const Dashboard: React.FC = () => {
 							<p>Entradas</p>
 							<img src={incomeImg} alt="Income" />
 						</header>
-						<h1>R$ 5.000,00</h1>
+						<h1>{balance.income}</h1>
 					</Card>
 					<Card>
 						<header>
 							<p>Saídas</p>
 							<img src={outcomeImg} alt="Outcome" />
 						</header>
-						<h1>R$ 1.000,00</h1>
+						<h1>{balance.outcome}</h1>
 					</Card>
 					<Card total>
 						<header>
 							<p>Total</p>
 							<img src={totalImg} alt="Total" />
 						</header>
-						<h1>R$ 4000,00</h1>
+						<h1>{balance.total}</h1>
 					</Card>
 				</CardContainer>
 
@@ -50,18 +103,16 @@ const Dashboard: React.FC = () => {
 						</thead>
 
 						<tbody>
-							<tr>
-								<td className="title">Computer</td>
-								<td className="income">R$ 5.000,00</td>
-								<td>Sell</td>
-								<td>20/04/2020</td>
-							</tr>
-							<tr>
-								<td className="title">Website Hosting</td>
-								<td className="outcome">R$ - 1.000,00</td>
-								<td>Hosting</td>
-								<td>19/04/2020</td>
-							</tr>
+							{transactions.map((transaction) => (
+								<tr key={transaction.id}>
+									<td className="title">{transaction.title}</td>
+									<td className={transaction.type}>
+										{transaction.formattedValue}
+									</td>
+									<td>{transaction.category.title}</td>
+									<td>{transaction.formattedDate}</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</TableContainer>

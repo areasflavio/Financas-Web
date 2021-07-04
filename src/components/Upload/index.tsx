@@ -33,6 +33,7 @@ const Upload: React.FC<UploadProps> = ({ onUpload }: UploadProps) => {
 				accept=".csv, application/vnd.ms-excel, text/csv,"
 				onDropAccepted={(files) => onUpload(files)}
 			>
+				{/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
 				{({ getRootProps, getInputProps, isDragActive, isDragReject }): any => (
 					<DropContainer
 						{...getRootProps()}

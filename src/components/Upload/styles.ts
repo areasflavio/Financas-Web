@@ -4,6 +4,7 @@ interface UploadProps {
 	isDragActive: boolean;
 	isDragReject: boolean;
 	refKey?: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	[key: string]: any;
 	type?: 'error' | 'success' | 'default';
 }
