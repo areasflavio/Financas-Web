@@ -21,3 +21,12 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 `;
+
+/**
+ * Paleta de cores
+ * azul: #1e90ff
+ * amarelo: #FFAB1F
+ * vermelho: #FF4538
+ * verde: #31BF0D
+ * fonte1: #365B80
+ */
