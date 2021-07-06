@@ -9,7 +9,7 @@ export const Container = styled.main`
 
 	margin: 0 auto;
 
-	padding: 0 2rem;
+	padding: 0 2rem 2rem;
 `;
 
 export const CardContainer = styled.section`
@@ -62,7 +62,7 @@ export const Card = styled.div`
 `;
 
 export const TableContainer = styled.section`
-	margin-top: 4rem;
+	margin-top: 2rem;
 
 	table {
 		width: 100%;
