@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import filesize from 'filesize';
-
 import axios from 'axios';
-import Header from '../../components/Header';
+
 import Upload from '../../components/Upload';
 import FileList from '../../components/FileList';
 
@@ -42,8 +41,7 @@ const Import: React.FC = () => {
 			await axios.all(axiosData);
 
 			history.push('/');
-		} catch (err) {
-			// eslint-disable-next-line no-console
+		} catch (err: any) {
 			console.error(err.response.error);
 		}
 	}
@@ -60,7 +58,6 @@ const Import: React.FC = () => {
 
 	return (
 		<>
-			<Header />
 			<Container>
 				<Title>Importar uma transação</Title>
 				<ImportFileContainer>

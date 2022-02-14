@@ -28,13 +28,13 @@ export const Card = styled.div`
 	padding: 1rem 2rem;
 	border-radius: 0.25rem;
 
-	background: ${({ total }: CardProps): string => (total ? '#FF872C' : '#fff')};
+	background: ${({ total }: CardProps): string => (total ? '#ffab1f' : '#fff')};
 	color: ${({ total }: CardProps): string => (total ? '#fff' : '#365b80')};
 
 	transition: all 0.2s;
 
 	&:hover {
-		transform: translateY(-1rem);
+		transform: translateY(-0.5rem);
 	}
 
 	header {

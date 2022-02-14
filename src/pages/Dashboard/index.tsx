@@ -1,7 +1,4 @@
-/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
-
-import Header from '../../components/Header';
 
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
@@ -64,8 +61,6 @@ const Dashboard: React.FC = () => {
 
 	return (
 		<>
-			<Header />
-
 			<Container>
 				<CardContainer>
 					<Card>
