@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -7,7 +7,12 @@ import api from '../../services/api';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 
-import { Container, RadioBox, TransactionTypeContainer } from './styles';
+import {
+	Container,
+	RadioBox,
+	TransactionTypeContainer,
+	InputSelect,
+} from './styles';
 
 interface NewTransactionModalProps {
 	isOpen: boolean;
@@ -16,6 +21,15 @@ interface NewTransactionModalProps {
 
 Modal.setAppElement('#root');
 
+type Category = {
+	label: string;
+	value: string;
+};
+
+type APICategory = {
+	title: string;
+};
+
 const NewTransactionModal: React.FC<NewTransactionModalProps> = ({
 	isOpen,
 	onRequestClose,
@@ -23,22 +37,38 @@ const NewTransactionModal: React.FC<NewTransactionModalProps> = ({
 	const [title, setTitle] = useState('');
 	const [value, setValue] = useState(0);
 	const [type, setType] = useState('income');
-	const [category, setCategory] = useState('');
+	const [category, setCategory] = useState<Category | undefined>(undefined);
+	const [categoriesOptions, setCategoriesOptions] = useState<Category[]>([]);
 
 	const history = useHistory();
 	const location = useLocation();
+
+	useEffect(() => {
+		async function getCategories() {
+			const response = await api.get<APICategory[]>('/categories');
+
+			const categoriesFormatted = response.data.map((c) => ({
+				label: c.title,
+				value: c.title.toLowerCase(),
+			}));
+
+			setCategoriesOptions(categoriesFormatted);
+		}
+
+		getCategories();
+	}, []);
 
 	async function handleCreateNewTransaction(event: React.FormEvent) {
 		event.preventDefault();
 
 		try {
-			if (title === '' || category === '' || value === 0) {
+			if (title === '' || category?.value === '' || value === 0) {
 				throw new Error('Something went wrong.');
 			}
 
 			await api.post('/transactions', {
 				value,
-				category,
+				category: category?.label,
 				title,
 				type,
 			});
@@ -46,7 +76,7 @@ const NewTransactionModal: React.FC<NewTransactionModalProps> = ({
 			setTitle('');
 			setValue(0);
 			setType('income');
-			setCategory('');
+			setCategory(undefined);
 
 			onRequestClose();
 
@@ -60,10 +90,19 @@ const NewTransactionModal: React.FC<NewTransactionModalProps> = ({
 		}
 	}
 
+	function handleRequestClose() {
+		setTitle('');
+		setValue(0);
+		setType('income');
+		setCategory(undefined);
+
+		onRequestClose();
+	}
+
 	return (
 		<Modal
 			isOpen={isOpen}
-			onRequestClose={onRequestClose}
+			onRequestClose={handleRequestClose}
 			overlayClassName="react-modal-overlay"
 			className="react-modal-content"
 		>
@@ -103,11 +142,27 @@ const NewTransactionModal: React.FC<NewTransactionModalProps> = ({
 					</RadioBox>
 				</TransactionTypeContainer>
 
-				<input
-					type="text"
-					placeholder="Categoria"
+				<InputSelect
+					classNamePrefix="Select"
+					isClearable
+					onCreateOption={(inputValue) => {
+						setCategoriesOptions((prevOptions) => [
+							...prevOptions,
+							{
+								label: inputValue,
+								value: inputValue.toLowerCase(),
+							},
+						]);
+						setCategory({ label: inputValue, value: inputValue.toLowerCase() });
+					}}
+					placeholder="Seleciona a categoria"
 					value={category}
-					onChange={(event) => setCategory(event.target.value)}
+					onChange={(newValue) => setCategory(newValue as Category)}
+					createOptionPosition="first"
+					formatCreateLabel={(inputValue) => (
+						<p>Criar categoria &quot;{inputValue}&quot;</p>
+					)}
+					options={categoriesOptions}
 				/>
 
 				<button type="submit">Cadastrar</button>

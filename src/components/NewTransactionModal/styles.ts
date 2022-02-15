@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CreatableSelect from 'react-select/creatable';
 import { darken, transparentize } from 'polished';
 
 export const Container = styled.form`
@@ -105,5 +106,59 @@ export const RadioBox = styled.button.attrs({
 
 		font-size: 1rem;
 		color: #365b80;
+	}
+`;
+
+export const InputSelect = styled(CreatableSelect)`
+	& .Select__control {
+		width: 100%;
+		height: 4rem;
+
+		padding: 0 0.5rem 0 1.5rem;
+		border-radius: 0.25rem;
+		border: 1px solid #d7d7d7;
+
+		background: #e7e9ee;
+
+		font-weight: 400;
+		font-size: 1rem;
+
+		& + input {
+			margin-top: 1rem;
+		}
+	}
+
+	.Select__value-container {
+		padding: 0;
+
+		.Select__single-value {
+			color: #365b80;
+		}
+
+		.Select__placeholder {
+			color: #365b80;
+		}
+
+		.Select__input-container {
+			padding: 0;
+			margin: 0;
+			color: #365b80;
+		}
+	}
+
+	.Select__menu {
+		background: #f0f2f5;
+
+		.Select__menu-list {
+			color: #365b80;
+
+			.Select__option--is-focused {
+				background: #e7e9ee;
+			}
+
+			.Select__option--is-selected {
+				background: #1e90ff;
+			}
+		}
 	}
 `;
