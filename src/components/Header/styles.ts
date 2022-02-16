@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	display: flex;
 
-	background: #1e90ff;
+	background: var(--color-blue);
 
 	padding: 2rem 0;
 
@@ -23,7 +23,7 @@ export const Container = styled.div`
 			h1 {
 				font-weight: normal;
 				font-size: 1.5rem;
-				color: #fff;
+				color: var(--color-white);
 			}
 		}
 
@@ -33,7 +33,7 @@ export const Container = styled.div`
 			margin-left: auto;
 
 			a {
-				color: #fff;
+				color: var(--color-white);
 				text-decoration: none;
 				font-size: 1rem;
 				transition: opacity 0.2s;
@@ -58,9 +58,9 @@ export const Container = styled.div`
 			padding: 0 2rem;
 
 			font-size: 1rem;
-			color: #ffffff;
+			color: var(--color-white);
 
-			background: #ffab1f;
+			background: var(--color-yellow);
 
 			transition: filter 0.2s;
 

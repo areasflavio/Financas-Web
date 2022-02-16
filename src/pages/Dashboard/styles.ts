@@ -14,7 +14,6 @@ export const Container = styled.main`
 
 export const CardContainer = styled.section`
 	display: grid;
-	/* grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); */
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 2rem;
 
@@ -28,8 +27,10 @@ export const Card = styled.div`
 	padding: 1rem 2rem;
 	border-radius: 0.25rem;
 
-	background: ${({ total }: CardProps): string => (total ? '#ffab1f' : '#fff')};
-	color: ${({ total }: CardProps): string => (total ? '#fff' : '#365b80')};
+	background: ${({ total }: CardProps): string =>
+		total ? 'var(--color-yellow)' : 'var(--color-white)'};
+	color: ${({ total }: CardProps): string =>
+		total ? 'var(--color-white)' : 'var(--color-blue-dark)'};
 
 	transition: all 0.2s;
 
@@ -72,27 +73,27 @@ export const TableContainer = styled.section`
 			font-weight: normal;
 			text-align: left;
 			line-height: 1.5rem;
-			color: #365b80;
+			color: var(--color-blue-dark);
 
 			padding: 1.25rem 2rem;
 		}
 
 		td {
-			color: #365b80;
-			background: #fff;
+			color: var(--color-blue-dark);
+			background: var(--color-white);
 
 			padding: 1.25rem 2rem;
 
 			&.title {
-				color: #1e90ff;
+				color: var(--color-blue);
 			}
 
 			&.income {
-				color: #31bf0d;
+				color: var(--color-green);
 			}
 
 			&.outcome {
-				color: #ff4538;
+				color: var(--color-red);
 			}
 		}
 

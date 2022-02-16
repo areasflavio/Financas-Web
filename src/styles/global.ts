@@ -1,6 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+	:root {
+		--color-blue: #1E90FF;
+		--color-blue-dark: #365B80;
+		--color-yellow: #FFAB1F;
+		--color-red: #FF4538;
+		--color-green: #31BF0D;
+		--color-white: #FFFFFF;
+		--color-gray: #E7E9EE;
+		--color-gray-100: #D7D7D7;
+	}
+
   * {
     margin: 0;
     padding: 0;
@@ -67,12 +78,3 @@ export default createGlobalStyle`
     }
   }
 `;
-
-/**
- * Paleta de cores
- * azul: #1e90ff
- * amarelo: #FFAB1F
- * vermelho: #FF4538
- * verde: #31BF0D
- * fonte1: #365B80
- */

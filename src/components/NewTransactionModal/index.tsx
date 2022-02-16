@@ -129,7 +129,7 @@ const NewTransactionModal: React.FC<NewTransactionModalProps> = ({
 						isActive={type === 'income'}
 						activeColor="green"
 					>
-						<img src={incomeImg} alt="Entrada" />
+						<img src={incomeImg} alt="Entrada" height="24" width="24" />
 						<span>Entrada</span>
 					</RadioBox>
 					<RadioBox
@@ -137,7 +137,7 @@ const NewTransactionModal: React.FC<NewTransactionModalProps> = ({
 						isActive={type === 'outcome'}
 						activeColor="red"
 					>
-						<img src={outcomeImg} alt="Saída" />
+						<img src={outcomeImg} alt="Saída" height="24" width="24" />
 						<span>Saída</span>
 					</RadioBox>
 				</TransactionTypeContainer>

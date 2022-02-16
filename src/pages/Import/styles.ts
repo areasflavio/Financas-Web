@@ -8,7 +8,7 @@ export const Container = styled.main`
 	padding: 2.25rem 1.25rem;
 
 	margin-top: -7rem;
-	background: #fff;
+	background: var(--color-white);
 	border-radius: 0.25rem;
 `;
 
@@ -16,7 +16,7 @@ export const Title = styled.h1`
 	font-weight: 500;
 	font-size: 2.25rem;
 	line-height: 3.375rem;
-	color: #365b80;
+	color: var(--color-blue-dark);
 	text-align: center;
 `;
 
@@ -37,7 +37,7 @@ export const Footer = styled.section`
 
 		font-size: 0.75rem;
 		line-height: 1.125rem;
-		color: #365b80;
+		color: var(--color-blue-dark);
 
 		img {
 			margin-right: 0.3125rem;
@@ -45,8 +45,8 @@ export const Footer = styled.section`
 	}
 
 	button {
-		background: #ffab1f;
-		color: #fff;
+		background: var(--color-yellow);
+		color: var(--color-white);
 
 		padding: 1rem 5rem;
 		border: 0;
@@ -55,7 +55,7 @@ export const Footer = styled.section`
 		transition: background-color 0.2s;
 
 		&:hover {
-			background: ${shade(0.1, '#FFAB1F')};
+			background: ${shade(0.1, `#FFAB1F`)};
 		}
 	}
 `;

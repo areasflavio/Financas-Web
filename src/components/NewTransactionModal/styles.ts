@@ -4,7 +4,7 @@ import { darken, transparentize } from 'polished';
 
 export const Container = styled.form`
 	h2 {
-		color: #1e90ff;
+		color: var(--color-blue);
 		font-size: 1.5rem;
 		margin-bottom: 2rem;
 	}
@@ -14,16 +14,16 @@ export const Container = styled.form`
 		height: 4rem;
 		padding: 0 1.5rem;
 		border-radius: 0.25rem;
-		border: 1px solid #d7d7d7;
+		border: 1px solid var(--color-gray-100);
 
-		background: #e7e9ee;
-		color: #365b80;
+		background: var(--color-gray);
+		color: var(--color-blue-dark);
 
 		font-weight: 400;
 		font-size: 1rem;
 
 		&::placeholder {
-			color: #365b80;
+			color: var(--color-blue-dark);
 		}
 
 		& + input {
@@ -40,8 +40,8 @@ export const Container = styled.form`
 		border-radius: 0.25rem;
 		border: 0;
 
-		background: #ffab1f;
-		color: #ffffff;
+		background: var(--color-yellow);
+		color: var(--color-white);
 
 		font-size: 1rem;
 		font-weight: 600;
@@ -69,7 +69,7 @@ interface RadioBoxProps {
 
 const colors = {
 	red: '#FF4538',
-	green: '#31bf0d',
+	green: '#31BF0D',
 };
 
 export const RadioBox = styled.button.attrs({
@@ -80,7 +80,7 @@ export const RadioBox = styled.button.attrs({
 	justify-content: center;
 
 	height: 4rem;
-	border: 1px solid #d7d7d7;
+	border: 1px solid var(--color-gray-100);
 	border-radius: 0.25rem;
 
 	background: ${(props) =>
@@ -105,7 +105,7 @@ export const RadioBox = styled.button.attrs({
 		margin-left: 1rem;
 
 		font-size: 1rem;
-		color: #365b80;
+		color: var(--color-blue-dark);
 	}
 `;
 
@@ -116,9 +116,9 @@ export const InputSelect = styled(CreatableSelect)`
 
 		padding: 0 0.5rem 0 1.5rem;
 		border-radius: 0.25rem;
-		border: 1px solid #d7d7d7;
+		border: 1px solid var(--color-gray-100);
 
-		background: #e7e9ee;
+		background: var(--color-gray);
 
 		font-weight: 400;
 		font-size: 1rem;
@@ -132,17 +132,17 @@ export const InputSelect = styled(CreatableSelect)`
 		padding: 0;
 
 		.Select__single-value {
-			color: #365b80;
+			color: var(--color-blue-dark);
 		}
 
 		.Select__placeholder {
-			color: #365b80;
+			color: var(--color-blue-dark);
 		}
 
 		.Select__input-container {
 			padding: 0;
 			margin: 0;
-			color: #365b80;
+			color: var(--color-blue-dark);
 		}
 	}
 
@@ -150,14 +150,14 @@ export const InputSelect = styled(CreatableSelect)`
 		background: #f0f2f5;
 
 		.Select__menu-list {
-			color: #365b80;
+			color: var(--color-blue-dark);
 
 			.Select__option--is-focused {
-				background: #e7e9ee;
+				background: var(--color-gray);
 			}
 
 			.Select__option--is-selected {
-				background: #1e90ff;
+				background: var(--color-blue);
 			}
 		}
 	}

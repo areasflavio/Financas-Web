@@ -7,7 +7,7 @@ export const Container = styled.ul`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		color: #365b80;
+		color: var(--color-blue-dark);
 
 		& + li {
 			margin-top: 1rem;
@@ -24,7 +24,7 @@ export const FileInfo = styled.div`
 	button {
 		border: 0;
 		background: transparent;
-		color: #ff4538;
+		color: var(--color-red);
 		margin-left: 0.3125rem;
 		cursor: pointer;
 	}

@@ -16,7 +16,7 @@ const Header: React.FC<IHeaderProps> = ({
 		<Container>
 			<header>
 				<div>
-					<img src={logoImg} alt="fmoney" />
+					<img src={logoImg} alt="fmoney" width="32" height="32" />
 
 					<h1>Fmoney</h1>
 				</div>

@@ -66,21 +66,21 @@ const Dashboard: React.FC = () => {
 					<Card>
 						<header>
 							<p>Entradas</p>
-							<img src={incomeImg} alt="Income" />
+							<img src={incomeImg} alt="Income" height="24" width="24" />
 						</header>
 						<h1>{balance.income}</h1>
 					</Card>
 					<Card>
 						<header>
 							<p>Saídas</p>
-							<img src={outcomeImg} alt="Outcome" />
+							<img src={outcomeImg} alt="Outcome" height="24" width="24" />
 						</header>
 						<h1>{balance.outcome}</h1>
 					</Card>
 					<Card total>
 						<header>
 							<p>Total</p>
-							<img src={totalImg} alt="Total" />
+							<img src={totalImg} alt="Total" height="24" width="24" />
 						</header>
 						<h1>{balance.total}</h1>
 					</Card>

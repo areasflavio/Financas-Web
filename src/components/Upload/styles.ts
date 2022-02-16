@@ -4,24 +4,23 @@ interface UploadProps {
 	isDragActive: boolean;
 	isDragReject: boolean;
 	refKey?: string;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	[key: string]: any;
 	type?: 'error' | 'success' | 'default';
+	[key: string]: any;
 }
 
 const dragActive = css`
-	border-color: #31bf0d;
+	border-color: var(--color-green);
 `;
 
 const dragReject = css`
-	border-color: #ff4538;
+	border-color: var(--color-red);
 `;
 
 export const DropContainer = styled.div.attrs({
 	className: 'dropzone',
 })`
-	border: 1.5px dashed #969cb3;
-	border-radius: 5px;
+	border: 1.5px dashed var(--color-gray-100);
+	border-radius: 0.25rem;
 	cursor: pointer;
 
 	transition: height 0.2s ease;
@@ -34,16 +33,16 @@ export const DropContainer = styled.div.attrs({
 `;
 
 const messageColors = {
-	default: '#1e90ff',
+	default: '#1E90FF',
 	error: '#FF4538',
 	success: '#31BF0D',
 };
 
 export const UploadMessage = styled.p`
 	display: flex;
-	font-size: 16px;
-	line-height: 24px;
-	padding: 48px 0;
+	font-size: 1rem;
+	line-height: 1.5;
+	padding: 3rem 0;
 
 	color: ${({ type }: UploadProps) => messageColors[type || 'default']};
 
