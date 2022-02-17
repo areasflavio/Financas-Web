@@ -51,9 +51,8 @@ in this [repository](https://github.com/areasflavio/financas-server). The user
 interface is built with Styled Components. The entire codebase is written using
 Typescript.
 
-<!--
 <p align="center">
-  Checkout the <a href="https://areasflavio-financas.herokuapp.com">API Live version</a>
+  Checkout the <a href="https://fmoney-server.herokuapp.com">API Live version</a>
    hosted on:
 </p>
 <p align="center">
@@ -61,13 +60,12 @@ Typescript.
 </p>
 
 <p align="center">
-  You also can check the complete <a href="https://tasked.vercel.app">Application Live version</a>
+  You also can check the complete <a href="https://fmoney.vercel.app">Application Live version</a>
   hosted on:
 </p>
 <p align="center">
     <img alt="Vercel" src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
 </p>
--->
 
 <br/>
 
